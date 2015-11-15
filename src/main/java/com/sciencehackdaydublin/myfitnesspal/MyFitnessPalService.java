@@ -26,13 +26,18 @@ public class MyFitnessPalService {
         form.submit();
 	}
 	
-	public DataDto getWeightReport() {
-		JsonDocument weightReport = agent.get("http://www.myfitnesspal.com/reports/results/progress/1/20.json");
+	public DataDto getWeightReport(int days) {
+		JsonDocument weightReport = agent.get("http://www.myfitnesspal.com/reports/results/progress/1/" + days + ".json");
 		return new Gson().fromJson(weightReport.asString(), DataDto.class);
 	}
 	
-	public DataDto getCaloriesReport() {
-		JsonDocument caloriesReport = agent.get("http://www.myfitnesspal.com/reports/results/nutrition/Calories/20.json");
+	public DataDto getCaloriesReport(int days) {
+		JsonDocument caloriesReport = agent.get("http://www.myfitnesspal.com/reports/results/nutrition/Calories/" + days + ".json");
 		return new Gson().fromJson(caloriesReport.asString(), DataDto.class);
+	}
+	
+	public DataDto getKilojoulesBurnedReport(int days) {
+		JsonDocument kilojoulesReport = agent.get("http://www.myfitnesspal.com/reports/results/fitness/Kilojoules%20Burned/" + days + ".json");
+		return new Gson().fromJson(kilojoulesReport.asString(), DataDto.class);
 	}
 }
