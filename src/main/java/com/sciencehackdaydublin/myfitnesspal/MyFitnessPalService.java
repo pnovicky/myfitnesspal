@@ -40,4 +40,9 @@ public class MyFitnessPalService {
 		JsonDocument kilojoulesReport = agent.get("http://www.myfitnesspal.com/reports/results/fitness/Kilojoules%20Burned/" + days + ".json");
 		return new Gson().fromJson(kilojoulesReport.asString(), DataDto.class);
 	}
+	
+	public DataDto getSugarReport(int days) {
+		JsonDocument sugarReport = agent.get("http://www.myfitnesspal.com/reports/results/nutrition/Sugar/" + days + ".json");
+		return new Gson().fromJson(sugarReport.asString(), DataDto.class);
+	}
 }

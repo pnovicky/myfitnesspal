@@ -18,6 +18,6 @@ public class MyFitnessPalController {
     		produces = {MediaType.APPLICATION_JSON_VALUE})
     public String fitness(@RequestBody LoginDataDto loginDataDto) {
         service.login(loginDataDto.getUsername(), loginDataDto.getPassword());
-        return service.getKilojoulesBurnedReport(30).getCategory();
+        return service.getSugarReport(30).getCategory();
     }
 }
